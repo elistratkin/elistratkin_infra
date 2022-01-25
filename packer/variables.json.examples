@@ -1,0 +1,6 @@
+{
+	"service_account_key_file": "key.json",
+	"folder_id": "dfg",
+	"subnet_id": "dfg",
+	"source_image_family": "dfg"
+	}
