@@ -24,7 +24,7 @@ resource "yandex_compute_instance" "app" {
     host        = yandex_compute_instance.app.network_interface.0.nat_ip_address
     user        = "ubuntu"
     agent       = false
-    private_key = file("C:/.ssh/appuser")
+    private_key = file(var.private_key_path)
   }
   network_interface {
     subnet_id = var.subnet_id
