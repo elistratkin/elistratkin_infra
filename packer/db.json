@@ -6,7 +6,7 @@
 	"folder_id": "{{ user `folder_id` }}",
 	"subnet_id": "{{ user `subnet_id` }}",
 	"source_image_family": "{{ user `source_image_family` }}",
-	"image_name": "reddit-db-base-{{timestamp}}",
+	"image_name": "reddit-db",
 	"image_family": "reddit-db-base",
 	"ssh_username": "ubuntu",
 	"platform_id": "standard-v1",
@@ -14,11 +14,17 @@
 	}
   ],
 
-  "provisioners": [
+  "provisioners": [ 
+	  {
+		  "type": "shell",
+		  "inline": [
+			  "sleep 60",
+			  "sudo apt-get install python -y"
+		  ]
+	  },
 	{
-	"type": "shell",
-	"script": "scripts/install_mongodb.sh",
-	"execute_command": "sudo {{.Path}}"
+	"type": "ansible",
+	"playbook_file": "ansible/packer_db.yml"
 	}
 	]
 }
